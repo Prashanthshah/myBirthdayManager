@@ -20,7 +20,7 @@ const WoW = () => {
   return (
     <>
 
-      <Wowslider   text = {data}/>
+      <Wowslider text = {data}/>
   </>
   )
 }

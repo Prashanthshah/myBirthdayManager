@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Wowslider from './Wowslider'
+
 
 const WoW = () => {
   const[data,setData] = useState([])
+  const[index, setIndex] = useState(0)
   useEffect(()=>{
     fetch("https://type.fit/api/quotes")
     .then((res) =>{
@@ -12,17 +13,38 @@ const WoW = () => {
       setData(mess);
     })
   },[])
-  // console.log(data)
-  let i = 67;
-  // console.log(data)
-  
-  
-  return (
-    <>
 
-      <Wowslider text = {data}/>
-  </>
-  )
-}
+  
+  useEffect(()=>{
+  let slider = setInterval(()=>{
+    setIndex(Math.floor(Math.random()*1600));
+  },5000);
+  return ()=> clearInterval(slider)
+  },[])
+  return (
+  <section className='quotes'>
+
+       {
+        data.map(({author,text},i) =>{
+          let position = 'nextSlide';
+          if(i === index){
+            position = 'currentSlide';
+          }
+      
+
+          return(
+            <article key = {i} className = {position}>
+              <p>{text}</p>
+              <div className='author'>
+              <span>--</span><h4>{author}</h4>
+              </div>
+            </article>
+          )
+          })
+      } 
+    
+      </section>
+)
+    }
 
 export default WoW

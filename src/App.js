@@ -1,14 +1,14 @@
-
-import './Styles/main.css';
-import { Navbar } from './components/Navbar';
-import WoW from './components/WoW';
-
+import "./Styles/main.css";
+import { Navbar } from "./components/Navbar";
+import WoW from "./components/WoW";
+import BdayView from "./components/BdayView";
 
 function App() {
   return (
     <>
-      <Navbar/>
-      <WoW/>
+      <Navbar />
+      <WoW />
+      <BdayView />
     </>
   );
 }
